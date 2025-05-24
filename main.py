@@ -1,18 +1,13 @@
-from seed import seed_users, seed_states
-from views.task_view import runMenu
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-def main():
-    """
-    Función principal que inicializa la base de datos y ejecuta el menú de la aplicación.
+app = FastAPI()
 
-    Author:  
-        Lorena Martínez  
-        Ángel Aragón  
-    """
-    seed_users()
-    seed_states()
 
-    runMenu()
-
-if __name__ == "__main__":
-    main()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
